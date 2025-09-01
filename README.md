@@ -6,11 +6,7 @@ A Flutter application built as a coding assessment for a freelance client positi
 
 ### Video Walkthrough
 
-<figure class="video_container">
- <video controls="true" allowfullscreen="true", height="400"    >
- <source src="showcase/app-walkthrough-video.mp4" type="video/mp4">
- </video>
-</figure>
+https://github.com/user-attachments/assets/bb360950-cd5c-4a2e-9cf6-0572c49ce22e
 
 **[▶️ Click here to download/view the walkthrough video (MP4)](showcase/app-walkthrough-video.mp4)**
 ## Architecture
