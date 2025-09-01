@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="mynewearth_practical_interview"
+        android:label="My New Earth Offerings"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:mynewearth_practical_interview/core/widgets/custom_snackbar.dart';
 import '../../domain/entities/offering.dart';
 import '../../domain/usecases/add_offering.dart';
 import '../../domain/usecases/delete_offering.dart';
@@ -33,7 +34,7 @@ class OfferingController extends GetxController {
       final result = await _getAllOfferings();
       offerings.value = result;
     } catch (e) {
-      Get.snackbar('Error', 'Failed to load offerings');
+      CustomSnackBar.showError( 'Failed to load offerings');
     } finally {
       isLoading.value = false;
     }
@@ -45,9 +46,9 @@ class OfferingController extends GetxController {
       await _addOffering(offering);
       await loadOfferings();
       Get.back();
-      Get.snackbar('Success', 'Offering added successfully');
+      CustomSnackBar.showSuccess("Offering added successfully");
     } catch (e) {
-      Get.snackbar('Error', 'Failed to add offering');
+      CustomSnackBar.showError('Failed to add offering');
     } finally {
       isLoading.value = false;
     }
@@ -59,9 +60,9 @@ class OfferingController extends GetxController {
       await _updateOffering(offering);
       await loadOfferings();
       Get.back();
-      Get.snackbar('Success', 'Offering updated successfully');
+      CustomSnackBar.showSuccess('Offering updated successfully');
     } catch (e) {
-      Get.snackbar('Error', 'Failed to update offering');
+      CustomSnackBar.showError( 'Failed to update offering');
     } finally {
       isLoading.value = false;
     }
@@ -72,9 +73,9 @@ class OfferingController extends GetxController {
       isLoading.value = true;
       await _deleteOffering(id);
       await loadOfferings();
-      Get.snackbar('Success', 'Offering deleted successfully');
+      CustomSnackBar.showSuccess('Offering deleted successfully');
     } catch (e) {
-      Get.snackbar('Error', 'Failed to delete offering');
+      CustomSnackBar.showError( 'Failed to delete offering');
     } finally {
       isLoading.value = false;
     }

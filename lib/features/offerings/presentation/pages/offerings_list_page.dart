@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../core/constants/app_colors.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../controllers/offering_controller.dart';
 import '../widgets/offering_card.dart';
@@ -14,26 +14,16 @@ class OfferingsListPage extends StatelessWidget {
     final controller = Get.find<OfferingController>();
 
     return Scaffold(
-      backgroundColor: AppColors.background,
       appBar: AppBar(
         title: const Text(
           AppStrings.offerings,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: AppColors.text,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, color: AppColors.text),
         ),
-        backgroundColor: AppColors.surface,
-        elevation: 0,
         centerTitle: true,
       ),
       body: Obx(() {
         if (controller.isLoading.value && controller.offerings.isEmpty) {
-          return const Center(
-            child: CircularProgressIndicator(
-              color: AppColors.primary,
-            ),
-          );
+          return const Center(child: CircularProgressIndicator());
         }
 
         if (controller.offerings.isEmpty) {
@@ -44,14 +34,14 @@ class OfferingsListPage extends StatelessWidget {
                 Icon(
                   Icons.spa_outlined,
                   size: 80,
-                  color: AppColors.textLight.withOpacity(0.5),
+                  color: AppColors.subDescription,
                 ),
                 const SizedBox(height: 24),
                 Text(
                   'No offerings yet',
                   style: TextStyle(
                     fontSize: 18,
-                    color: AppColors.textLight.withOpacity(0.7),
+                    color: AppColors.description,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -60,7 +50,7 @@ class OfferingsListPage extends StatelessWidget {
                   'Tap the + button to add your first offering',
                   style: TextStyle(
                     fontSize: 14,
-                    color: AppColors.textLight.withOpacity(0.5),
+                    color: AppColors.subDescription,
                   ),
                 ),
               ],
@@ -78,8 +68,10 @@ class OfferingsListPage extends StatelessWidget {
               final offering = controller.offerings[index];
               return OfferingCard(
                 offering: offering,
-                onTap: () => Get.to(() => AddEditOfferingPage(offering: offering)),
-                onDelete: () => _showDeleteDialog(context, controller, offering.id!),
+                onTap: () =>
+                    Get.to(() => AddEditOfferingPage(offering: offering)),
+                onDelete: () =>
+                    _showDeleteDialog(context, controller, offering.id!),
               );
             },
           ),
@@ -89,25 +81,22 @@ class OfferingsListPage extends StatelessWidget {
         onPressed: () => Get.to(() => const AddEditOfferingPage()),
         backgroundColor: AppColors.primary,
         elevation: 4,
-        child: const Icon(
-          Icons.add,
-          color: AppColors.text,
-          size: 28,
-        ),
+        child: const Icon(Icons.add, color: AppColors.text, size: 28),
       ),
     );
   }
 
-  void _showDeleteDialog(BuildContext context, OfferingController controller, int id) {
+  void _showDeleteDialog(
+    BuildContext context,
+    OfferingController controller,
+    int id,
+  ) {
     Get.dialog(
       AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: const Text(
           'Delete Offering',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: AppColors.text,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, color: AppColors.text),
         ),
         content: const Text(
           'Are you sure you want to delete this offering? This action cannot be undone.',

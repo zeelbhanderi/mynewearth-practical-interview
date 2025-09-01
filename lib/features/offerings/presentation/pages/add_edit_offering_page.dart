@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../core/constants/app_colors.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/constants/app_strings.dart';
+import '../../../../core/widgets/custom_text_field.dart';
 import '../../domain/entities/offering.dart';
 import '../controllers/offering_controller.dart';
-import '../widgets/custom_text_field.dart';
 
 class AddEditOfferingPage extends StatefulWidget {
   final Offering? offering;
@@ -69,7 +69,6 @@ class _AddEditOfferingPageState extends State<AddEditOfferingPage> {
     final controller = Get.find<OfferingController>();
 
     return Scaffold(
-      backgroundColor: AppColors.background,
       appBar: AppBar(
         title: Text(
           isEditing ? AppStrings.editOffering : AppStrings.addOffering,
@@ -78,8 +77,6 @@ class _AddEditOfferingPageState extends State<AddEditOfferingPage> {
             color: AppColors.text,
           ),
         ),
-        backgroundColor: AppColors.surface,
-        elevation: 0,
         centerTitle: true,
         leading: IconButton(
           onPressed: () => Get.back(),
@@ -197,7 +194,7 @@ class _AddEditOfferingPageState extends State<AddEditOfferingPage> {
             ),
             if (controller.isLoading.value)
               Container(
-                color: Colors.black.withOpacity(0.3),
+                color: AppColors.description,
                 child: const Center(
                   child: CircularProgressIndicator(
                     color: AppColors.primary,
