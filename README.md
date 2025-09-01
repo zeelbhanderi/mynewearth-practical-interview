@@ -5,10 +5,14 @@ A Flutter application built as a coding assessment for a freelance client positi
 ## Application Demo
 
 ### Video Walkthrough
-<video src="showcase/app-walkthrough-video.mov" controls height="600">
-   Your browser does not support the .mov video type.
-</video>
 
+<figure class="video_container">
+ <video controls="true" allowfullscreen="true", height="400"    >
+ <source src="showcase/app-walkthrough-video.mp4" type="video/mp4">
+ </video>
+</figure>
+
+**[▶️ Click here to download/view the walkthrough video (MP4)](showcase/app-walkthrough-video.mp4)**
 ## Architecture
 
 The app follows **Clean Architecture** principles with a feature-first folder structure:
